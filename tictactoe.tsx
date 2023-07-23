@@ -1,6 +1,6 @@
 import * as React from 'react';
 // @ts-ignore
-import Board from "./tictactoe/board";
+import Board from "./board.tsx";
 
 export const Tictactoe = () => {
 

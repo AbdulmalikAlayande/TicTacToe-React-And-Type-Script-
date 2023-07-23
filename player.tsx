@@ -3,7 +3,7 @@ import * as React from 'react';
 import {values} from './values'
 import {useState} from "react";
 
-type Props = {
+interface Props {
     playerName: string,
     identity: keyof typeof values
 };
