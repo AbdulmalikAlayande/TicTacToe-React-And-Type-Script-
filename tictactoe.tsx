@@ -8,6 +8,7 @@ import {useState} from "react";
 
 export const Tictactoe = () => {
     const [playerHasEnteredGame, setPayerHasEnteredGame] = useState(false)
+    const [buttonStartGameIsClicked, setButtonStartGameIsClicked] = useState(false)
 
     function collectPlayersNameAndIdentity() {
         setPayerHasEnteredGame(true)
@@ -21,6 +22,9 @@ export const Tictactoe = () => {
                 (<div className={"player_section_background"}>
                     <div>
                         <Player/>
+                    </div>
+                    <div id={"start_game_button"}>
+                        <button>Start Game</button>
                     </div>
                 </div>) : (
                     <div className={"welcome_section"}>

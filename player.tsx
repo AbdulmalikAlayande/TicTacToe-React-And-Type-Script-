@@ -1,11 +1,11 @@
 // @flow
 import * as React from 'react';
-import {values} from './values'
+//@ts
 import {useState} from "react";
 import './player.css'
 // @ts-ignore
-import "./tictactoeexception.ts";
-import TicTacToeException from "./tictactoeexception";
+import TicTacToeException from "./tictactoeexception.ts";
+const {values} = require('./values.tsx');
 
 const Player = () => {
     const [player1Name, setPlayer1Name] = useState("")
@@ -14,44 +14,63 @@ const Player = () => {
     const [oIsChosen, setOIsChosen] = useState(false)
     const [player2Name, setPlayer2Name] = useState("")
     const [player2Identity, setPlayer2Identity] = useState<keyof typeof values>(values.EMPTY)
-    function handlePlayer1Name(event: React.ChangeEvent<HTMLInputElement>) {
-        event.preventDefault()
-        setPlayer1Name(event.target.value.toString)
+    function throwError(identity) {
+        let message = "Please Choose The Second Character The Character " + identity + " Has Been Chosen";
+        let cause = "Player tried to choose identity " + identity + " But it has been chosen by the second player";
+        const exception = new TicTacToeException(message)
+        exception.setCause(cause)
+        exception.setErrorIdentifier("handleChangeForPlayerIdentity", "28, 29, 40, 41, 42, 43")
+        throw exception;
+    }
+
+    function checkIfPlayerIdentityHasBeenChosen(identity) {
+        if (identity === values.X && xIsChosen){
+            throwError(identity);
+        }
+        else if (identity === values.O && oIsChosen){
+            throwError(identity)
+        }
     }
 
     function playerHasNoIdentity(playerId) {
         return playerId === values.EMPTY
     }
 
-    function checkIfPlayerIdentityHasBeenChosen(identity) {
-        if (identity === values.X && xIsChosen){
-            let message = "Please Choose The Second Character The Character "+identity+" Has Been Chosen";
-            let cause = "Player tried to choose identity "+identity+" But it has been chosen by the second player";
-            const exception = new TicTacToeException(message)
-            exception.setCause(cause)
-            exception.setErrorIdentifier("handleChangeForPlayerIdentity", "28, 29, 40, 41, 42, 43")
-            throw exception;
-        }
-        else if (identity === values.O && oIsChosen){
-
-        }
+    function handlePlayer1Name(event: React.ChangeEvent<HTMLInputElement>) {
+        event.preventDefault()
+        setPlayer1Name(event.target.value)
     }
 
     function handleChangeForPlayer1Identity(event) {
         event.preventDefault()
-        if (playerHasNoIdentity(player1Identity) === true) {
-            setPlayer1Identity(event.target.textContent)
-            event.target.textContent === values.X ? setXIsChosen(true) : setOIsChosen(true)
+        try{
+            checkIfPlayerIdentityHasBeenChosen(event.target.textContent)
+            if (playerHasNoIdentity(player1Identity) === true) {
+                setPlayer1Identity(event.target.textContent)
+                event.target.textContent === values.X ? setXIsChosen(true) : setOIsChosen(true)
+            }
+        }catch (exception: TicTacToeException){
+
         }
-        checkIfPlayerIdentityHasBeenChosen(event.target.textContent)
     }
 
     function handlePlayer2Name(event: React.ChangeEvent<HTMLInputElement>) {
         event.preventDefault()
-        setPlayer2Name(event.target.value.toString)
+        setPlayer2Name(event.target.value)
     }
 
-    function handleChangeForPlayer2Identity(event: React.MouseEvent<HTMLButtonElement>) {
+    function handleChangeForPlayer2Identity(event) {
+        event.preventDefault()
+        try {
+            checkIfPlayerIdentityHasBeenChosen(event.target.textContent)
+            if (playerHasNoIdentity(player2Identity) === true) {
+                setPlayer2Identity(event.target.textContent)
+                event.target.textContent === values.X ? setXIsChosen(true) : setOIsChosen(true)
+            }
+
+        }catch (exception: TicTacToeException) {
+
+        }
     }
 
     return (
@@ -59,6 +78,7 @@ const Player = () => {
             <div className={"player_section"}>
                 <section id={"name_section"}>
                     <input
+                        value={player1Name}
                         placeholder={"enter player name"}
                         onChange={(event)=>{handlePlayer1Name(event)}}/>
                 </section>
@@ -76,6 +96,7 @@ const Player = () => {
             <div className={"player_section"}>
                 <section id={"name_section_1"}>
                     <input
+                        value={player2Name}
                         placeholder={"enter player name"}
                         onChange={(event)=>{handlePlayer2Name(event)}}/>
                 </section>

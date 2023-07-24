@@ -1,4 +1,4 @@
-class TicTacToeException extends Error{
+export default class TicTacToeException extends Error{
     private _message: String;
     private _cause: String;
     private _errorIdentifier: {
@@ -34,5 +34,3 @@ class TicTacToeException extends Error{
         return this._errorIdentifier
     }
 }
-
-export default TicTacToeException;
