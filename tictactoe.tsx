@@ -22,9 +22,6 @@ export const Tictactoe = () => {
                     <div>
                         <Player/>
                     </div>
-                    <div>
-                        <Player/>
-                    </div>
                 </div>) : (
                     <div className={"welcome_section"}>
                     <p id={"welcome"}>Welcome</p>

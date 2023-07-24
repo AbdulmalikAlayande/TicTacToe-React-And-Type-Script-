@@ -38,11 +38,11 @@
 .player_section button:hover{
     background-color: lightcoral;
 }
-#identity_button_section{
+#identity_button_section #identity_button_section_1{
     display: flex;
     justify-content: space-evenly;
 }
-#name_section{
+#name_section #name_section_1{
     display: flex;
     justify-content: center;
 }
