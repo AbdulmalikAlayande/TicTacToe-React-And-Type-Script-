@@ -1,13 +1,36 @@
 import * as React from 'react';
 // @ts-ignore
 import Board from "./board.tsx";
+// @ts-ignore
+import Player from "./player.tsx";
+import './tictactoe.css'
+import {useState} from "react";
 
 export const Tictactoe = () => {
+    const [playerHasEnteredGame, setPayerHasEnteredGame] = useState(false)
+
+    function collectPlayersNameAndIdentity() {
+        setPayerHasEnteredGame(true)
+        console.log(playerHasEnteredGame)
+        console.log("hi")
+    }
 
     return (
         <>
-            <Board/>
-        </>
+            {playerHasEnteredGame ?
+                (<div>
+                    <div>
+                        <Player name={"Unknown Player 1"} identity={"EMPTY"}/>
+                    </div>
+                    <div>
+                        <Player name={"Unknown Player 2"} identity={"EMPTY"}/>
+                    </div>
+                </div>) : (<div>
+                    <p id={"welcome"}>Welcome</p>
+                    <button onClick={()=>collectPlayersNameAndIdentity()}>Play game</button>
+                </div>)
+            }
+            </>
     );
 };
 export default Tictactoe;
