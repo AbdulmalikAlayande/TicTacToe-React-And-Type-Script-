@@ -1,6 +1,10 @@
 .player_section_background{
     display: flex;
+    width: 100em;
+    padding: 15px;
+    flex-direction: column;
     align-content: center;
+    align-items: center;
     background-color: #282c34;
     border-style: ridge none ridge none;
     border-width: 2px;
@@ -14,9 +18,7 @@
     border-width: 1px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
+    justify-content: space-evenly;
 }
 .player_section button{
     background-color: #282c34;
@@ -29,4 +31,8 @@
 #identity_button_section{
     display: flex;
     justify-content: space-evenly;
+}
+#name_section{
+    display: flex;
+    justify-content: center;
 }

@@ -24,9 +24,11 @@ const Player = ({name, identity}: Props) => {
     return (
         <div className={"player_section_background"}>
             <div className={"player_section"}>
-                <input
-                    value={playerName} placeholder={"enter player 1 name"}
-                    onChange={(event)=>{handlePlayerName(event)}}/>
+                <section id={"name_section"}>
+                    <input
+                        value={playerName} placeholder={"enter player 1 name"}
+                        onChange={(event)=>{handlePlayerName(event)}}/>
+                </section>
                 <section id={"identity_button_section"}>
                     <button
                         placeholder={"please pick your identity"} value={"X"}

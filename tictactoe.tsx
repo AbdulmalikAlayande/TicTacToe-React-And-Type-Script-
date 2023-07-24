@@ -18,7 +18,7 @@ export const Tictactoe = () => {
     return (
         <>
             {playerHasEnteredGame ?
-                (<div>
+                (<div className={"player_section_background"}>
                     <div>
                         <Player name={"Unknown Player 1"} identity={"EMPTY"}/>
                     </div>
