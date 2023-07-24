@@ -5,6 +5,31 @@ body{
     justify-content: center;
     align-items: center;
 }
+.welcome_section{
+    height: 50vh;
+    width: 50vw;
+    border-style: ridge;
+    border-color: #282c34;
+    border-width: 10px;
+    border-radius: 20px;
+    background-color: dimgray;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.welcome_section button{
+    font-size: 30px;
+    width: 15vw;
+    height: 15vh;
+    font-family: "Segoe Script", serif;
+    border-radius: 35px;
+}
+.welcome_section button:hover{
+    font-size: 40px;
+    background-color: #61dafb;
+    font-family: "Comic Sans MS", sans-serif;
+}
 .board_background{
     background-color: #61dafb;
     width: 100%;

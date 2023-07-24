@@ -20,12 +20,13 @@ export const Tictactoe = () => {
             {playerHasEnteredGame ?
                 (<div className={"player_section_background"}>
                     <div>
-                        <Player name={"Unknown Player 1"} identity={"EMPTY"}/>
+                        <Player/>
                     </div>
                     <div>
-                        <Player name={"Unknown Player 2"} identity={"EMPTY"}/>
+                        <Player/>
                     </div>
-                </div>) : (<div>
+                </div>) : (
+                    <div className={"welcome_section"}>
                     <p id={"welcome"}>Welcome</p>
                     <button onClick={()=>collectPlayersNameAndIdentity()}>Play game</button>
                 </div>)

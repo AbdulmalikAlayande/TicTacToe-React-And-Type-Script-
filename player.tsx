@@ -4,13 +4,9 @@ import {values} from './values'
 import {useState} from "react";
 import './player.css'
 
-interface Props {
-    name: string,
-    identity: keyof typeof values
-}
-const Player = ({name, identity}: Props) => {
-    const [playerName, setPlayerName] = useState(name)
-    const [playerIdentity, setPlayerIdentity] = useState(identity)
+const Player = () => {
+    const [playerName, setPlayerName] = useState("")
+    const [playerIdentity, setPlayerIdentity] = useState<keyof typeof values>()
     function handlePlayerName(event: React.ChangeEvent<HTMLInputElement>) {
         event.preventDefault()
         setPlayerName(event.target.value)
@@ -26,7 +22,7 @@ const Player = ({name, identity}: Props) => {
             <div className={"player_section"}>
                 <section id={"name_section"}>
                     <input
-                        value={playerName} placeholder={"enter player 1 name"}
+                        placeholder={"enter player name"}
                         onChange={(event)=>{handlePlayerName(event)}}/>
                 </section>
                 <section id={"identity_button_section"}>
