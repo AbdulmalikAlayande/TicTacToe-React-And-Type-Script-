@@ -16,23 +16,27 @@ export const Tictactoe = () => {
         console.log("hi")
     }
 
+
+
     return (
         <>
-            {playerHasEnteredGame ?
-                (<div className={"player_section_background"}>
+            {playerHasEnteredGame ? (<div className={"player_section_background"}>
                     <div>
                         <Player/>
                     </div>
                     <div id={"start_game_button"}>
-                        <button>Start Game</button>
+                        <button onClick={()=>{setButtonStartGameIsClicked(true)}}>Start Game</button>
                     </div>
-                </div>) : (
+                </div>) : buttonStartGameIsClicked ?  (<div>
+                        <Board/>
+                    </div>
+                    ) : (
                     <div className={"welcome_section"}>
                     <p id={"welcome"}>Welcome</p>
                     <button onClick={()=>collectPlayersNameAndIdentity()}>Play game</button>
                 </div>)
             }
-            </>
+        </>
     );
 };
 export default Tictactoe;
